@@ -39,3 +39,17 @@ print('Accuracy on training data: ', training_data_accuracy)
 X_test_prediction=classifier.predict(X_test)
 test_data_accuracy=accuracy_score(X_test_prediction, Y_test)
 print("Accuracy on test data: ", test_data_accuracy)
+
+# making a predictive system
+input_data=[6,190,92,0,0,35.5,0.278,66]
+input_data_arr=np.asarray(input_data)
+input_data_reshaped=input_data_arr.reshape(1,-1)
+input_data_std=scaler.transform(input_data_reshaped)
+# print(input_data_std)
+prediction=classifier.predict(input_data_std)
+print(prediction)
+
+if prediction[0]==0:
+    print("The person is not diabetic")
+else:
+    print("The person is diabetic") 
